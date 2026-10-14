@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-vehicle-diagnostics"
+version = "0.1.0"
+description = "Local OBD-II dashboard with explicit simulation, recording and replay"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "GPL-2.0-only"
+dependencies = ["obd==0.7.3", "Flask>=3.1.3,<4"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+vehicle-diagnostics = "vehicle_diagnostics.web:main"
+
+[tool.setuptools.package-data]
+vehicle_diagnostics = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["vehicle_diagnostics*"]
